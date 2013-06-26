@@ -23,7 +23,7 @@ class Main (QtGui.QMainWindow):
 		for i in range(0,self.ui.tabla_ve.columnCount()):
 			self.headers_vehiculo.append(self.ui.tabla_ve.horizontalHeaderItem(i).text())
 		for i in range(0,self.ui.tabla_ma.columnCount()):
-			self.headers_vehiculo.append(self.ui.tabla_ma.horizontalHeaderItem(i).text())
+			self.headers_marca.append(self.ui.tabla_ma.horizontalHeaderItem(i).text())
 	def set_signals(self):
 		self.ui.btn_nuevo_ve.clicked.connect(self.nuevo_ve)
 		self.ui.btn_editar_ve.clicked.connect(self.editar_ve)
