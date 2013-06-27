@@ -3,11 +3,14 @@
 import sys
 from PySide import QtGui, QtCore
 from mainwindow import Ui_MainWindow
+from forma_marca import FormMarca
 
 class Main (QtGui.QMainWindow):
 	
 	headers_vehiculo = []
 	headers_marca = []
+	marcas = []
+	vehiculos = []
 
 	def __init__(self):
 		super(Main, self).__init__()
@@ -41,10 +44,34 @@ class Main (QtGui.QMainWindow):
 		print "Eliminar Vehiculo"
 	
 	def nuevo_ma(self):
+		
+		dialog_marca = FormMarca(self)
+
+		loop = QtCore.QEventLoop()
+		dialog_marca.ui.btn_ok.clicked.connect(loop.quit)
+		loop.exec_()
+
+		print self.marcas
 		print "Nueva Marca"
 	def editar_ma(self):
+		
+		sel_itms = self.ui.tabla_ma.selectedItems()
+		for fila in range(len(sel_itms)/self.ui.tabla_ma.columnCount()) :
+			row = self.ui.tabla_ma.row(sel_itms[fila])
+		
+			self.marcas = [self.ui.tabla_ma.item(row, x).text() for x in range(self.ui.tabla_ma.columnCount()) ]
+			print self.marcas
+
+			dialog_marca = FormMarca(self, "Editar")
+
+			loop = QtCore.QEventLoop()
+			dialog_marca.ui.btn_ok.clicked.connect(loop.quit)
+			loop.exec_()
+
+			print self.marcas
 		print "Editar Marca"
 	def eliminar_ma(self):
+
 		print "Eliminar Marca"
 
 	def set_listeners(self):
@@ -73,7 +100,8 @@ class Main (QtGui.QMainWindow):
 	
 	def cargar_vehiculo(self):
 		productos = [[u"elantra", 1993, u"doble cabina"],
-					[u"sali", 2010, "doble cabina"]
+					[u"sail", 2010, "doble cabina"],
+					[u"gallardo", 2013, "una cabina"]
 					]
 		self.ui.tabla_ve.clear()
 		self.set_headers()
@@ -89,7 +117,8 @@ class Main (QtGui.QMainWindow):
 			r = r+1
 	def cargar_marca(self):
 		marcas = [[u"hyundai", u"Japon", 1],
-				[u"chevrolet",u"USA",1]
+				[u"chevrolet",u"USA",1],
+				[u"lamborghini", u"Italia", 1]
 				]
 		self.ui.tabla_ma.clear()
 		self.set_headers()
