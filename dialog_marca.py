@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog_marca.ui'
 #
-# Created: Thu Jun 27 11:27:25 2013
+# Created: Thu Jun 27 11:48:38 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,11 +13,6 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(531, 276)
-        self.buttonBox = QtGui.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(150, 210, 341, 32))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
         self.verticalLayoutWidget = QtGui.QWidget(Dialog)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(40, 60, 160, 80))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
@@ -44,14 +39,26 @@ class Ui_Dialog(object):
         self.le_pais = QtGui.QLineEdit(self.verticalLayoutWidget_2)
         self.le_pais.setObjectName("le_pais")
         self.verticalLayout_2.addWidget(self.le_pais)
+        self.horizontalLayoutWidget = QtGui.QWidget(Dialog)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(287, 180, 211, 80))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.pushButton_2 = QtGui.QPushButton(self.horizontalLayoutWidget)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.btn_ok = QtGui.QPushButton(self.horizontalLayoutWidget)
+        self.btn_ok.setObjectName("btn_ok")
+        self.horizontalLayout.addWidget(self.btn_ok)
 
         self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Formulario Marca", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Dialog", "Ingrese Nombre:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "Ingrese País:", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_2.setText(QtGui.QApplication.translate("Dialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_ok.setText(QtGui.QApplication.translate("Dialog", "Ok", None, QtGui.QApplication.UnicodeUTF8))
 
