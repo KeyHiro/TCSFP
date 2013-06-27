@@ -30,12 +30,14 @@ def __anyadir_auto(*args):
 	"""
 		Anyade un auto a la tabla autos.
 		Se supodrá que args tendrá el siguiente formato:
-			(modelo, color, motor, peso, descripcion, 
+			(modelo, id_marca, id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, marca, tipo)
 	"""
 	# SON 11 !!!
-	query = """INSERT INTO autos VALUES(?, marcas.id_marca, tipos.id_tipo,?,?,?,?,?,?,?,?)
-				WHERE marcas.nombre == ? AND tipos.nombre == ?""" 
+	query = """INSERT INTO autos (modelo, id_marca, id_tipo, color, motor,
+								 peso, descripcion, rendimiento, imagen,
+								 fecha_creacion, marca, tipo)
+			    VALUES(?,?,?,?,?,?,?,?,?,?,?)""" 
 	try:
 		exec_db(query, list(args))
 	except:
