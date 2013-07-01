@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Mon Jun 24 03:31:49 2013
+# Created: Fri Jun 28 13:18:25 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -30,9 +30,10 @@ class Ui_MainWindow(object):
         self.tabla_ve.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tabla_ve.setAutoFillBackground(False)
         self.tabla_ve.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.tabla_ve.setSelectionMode(QtGui.QAbstractItemView.ContiguousSelection)
         self.tabla_ve.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
         self.tabla_ve.setObjectName("tabla_ve")
-        self.tabla_ve.setColumnCount(3)
+        self.tabla_ve.setColumnCount(4)
         self.tabla_ve.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tabla_ve.setHorizontalHeaderItem(0, item)
@@ -40,6 +41,8 @@ class Ui_MainWindow(object):
         self.tabla_ve.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tabla_ve.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabla_ve.setHorizontalHeaderItem(3, item)
         self.horizontalLayoutWidget = QtGui.QWidget(self.tab_ve)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 20, 611, 80))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
@@ -70,9 +73,10 @@ class Ui_MainWindow(object):
         self.tabla_ma.setGeometry(QtCore.QRect(20, 110, 611, 231))
         self.tabla_ma.setMinimumSize(QtCore.QSize(0, 0))
         self.tabla_ma.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.tabla_ma.setSelectionMode(QtGui.QAbstractItemView.ContiguousSelection)
         self.tabla_ma.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
         self.tabla_ma.setObjectName("tabla_ma")
-        self.tabla_ma.setColumnCount(3)
+        self.tabla_ma.setColumnCount(4)
         self.tabla_ma.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tabla_ma.setHorizontalHeaderItem(0, item)
@@ -80,6 +84,8 @@ class Ui_MainWindow(object):
         self.tabla_ma.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tabla_ma.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabla_ma.setHorizontalHeaderItem(3, item)
         self.horizontalLayoutWidget_2 = QtGui.QWidget(self.tab_ma)
         self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(20, 20, 611, 80))
         self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
@@ -111,14 +117,15 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menuBar)
 
         self.retranslateUi(MainWindow)
-        self.tab.setCurrentIndex(0)
+        self.tab.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Concesionaria", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ve.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("MainWindow", "Modelo", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ve.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("MainWindow", "Año", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ve.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("MainWindow", "Tipo", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ve.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("MainWindow", "id_auto", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ve.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("MainWindow", "Modelo", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ve.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("MainWindow", "Año", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ve.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("MainWindow", "Tipo", None, QtGui.QApplication.UnicodeUTF8))
         self.le_filtro_ve.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "¿Qué desea buscar?", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_nuevo_ve.setText(QtGui.QApplication.translate("MainWindow", "Nuevo Vehiculo", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_editar_ve.setToolTip(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" color:#e8d823;\">Presiona para editar una fila</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
@@ -126,9 +133,10 @@ class Ui_MainWindow(object):
         self.btn_eliminar_ve.setToolTip(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><span style=\" color:#e8d823;\">Presione para eliminar una fila</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_eliminar_ve.setText(QtGui.QApplication.translate("MainWindow", "Eliminar Vehiculo", None, QtGui.QApplication.UnicodeUTF8))
         self.tab.setTabText(self.tab.indexOf(self.tab_ve), QtGui.QApplication.translate("MainWindow", "Vehículos", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ma.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("MainWindow", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ma.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("MainWindow", "Pais", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabla_ma.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("MainWindow", "Total de Autos", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ma.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("MainWindow", "id_marca", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ma.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("MainWindow", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ma.horizontalHeaderItem(2).setText(QtGui.QApplication.translate("MainWindow", "Pais", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabla_ma.horizontalHeaderItem(3).setText(QtGui.QApplication.translate("MainWindow", "Total de Autos", None, QtGui.QApplication.UnicodeUTF8))
         self.le_filtro_ma.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "¿Qué desea buscar?", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_nuevo_ma.setText(QtGui.QApplication.translate("MainWindow", "Nueva Marca", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_editar_ma.setText(QtGui.QApplication.translate("MainWindow", "Editar Marca", None, QtGui.QApplication.UnicodeUTF8))

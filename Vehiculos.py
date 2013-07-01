@@ -22,11 +22,13 @@ class Main (QtGui.QMainWindow):
 		self.cargar_marca()
 		self.cargar_vehiculo()
 		self.show()
+
 	def get_headers(self):
 		for i in range(0,self.ui.tabla_ve.columnCount()):
 			self.headers_vehiculo.append(self.ui.tabla_ve.horizontalHeaderItem(i).text())
 		for i in range(0,self.ui.tabla_ma.columnCount()):
 			self.headers_marca.append(self.ui.tabla_ma.horizontalHeaderItem(i).text())
+			
 	def set_signals(self):
 		self.ui.btn_nuevo_ve.clicked.connect(self.nuevo_ve)
 		self.ui.btn_editar_ve.clicked.connect(self.editar_ve)
@@ -46,32 +48,54 @@ class Main (QtGui.QMainWindow):
 	def nuevo_ma(self):
 		
 		dialog_marca = FormMarca(self)
-
-		loop = QtCore.QEventLoop()
+		
+		"""loop = QtCore.QEventLoop()
 		dialog_marca.ui.btn_ok.clicked.connect(loop.quit)
-		loop.exec_()
-
-		print self.marcas
+		loop.exec_()"""
+		if dialog_marca.result:
+			print self.marcas
 		print "Nueva Marca"
 	def editar_ma(self):
 		
 		sel_itms = self.ui.tabla_ma.selectedItems()
-		for fila in range(len(sel_itms)/self.ui.tabla_ma.columnCount()) :
+		n_filas = len(sel_itms)/(self.ui.tabla_ma.columnCount())
+		
+		for fila in range(n_filas) :
 			row = self.ui.tabla_ma.row(sel_itms[fila])
 		
-			self.marcas = [self.ui.tabla_ma.item(row, x).text() for x in range(self.ui.tabla_ma.columnCount()) ]
+			self.marcas = [self.ui.tabla_ma.item(row, x).text() for x in range(1,self.ui.tabla_ma.columnCount()-1) ]
 			print self.marcas
 
 			dialog_marca = FormMarca(self, "Editar")
-
-			loop = QtCore.QEventLoop()
-			dialog_marca.ui.btn_ok.clicked.connect(loop.quit)
-			loop.exec_()
-
-			print self.marcas
+			if dialog_marca.result:
+				print self.marcas
 		print "Editar Marca"
+
 	def eliminar_ma(self):
 
+		sel_itms = self.ui.tabla_ma.selectedItems()
+		n_filas = len(sel_itms)/(self.ui.tabla_ma.columnCount())
+
+		msgBox = QtGui.QMessageBox()
+		#msgBox.setWindowIconText("Eliminar marca(s)")
+		msgBox.setText("Se ha(n) seleccionado "+str(n_filas)+" marca(s).")
+		msgBox.setInformativeText("Seguro que quiere eliminar?")
+		msgBox.setStandardButtons(QtGui.QMessageBox.Save | QtGui.QMessageBox.Cancel)
+		msgBox.setDefaultButton(QtGui.QMessageBox.Save)
+		ret = msgBox.exec_()
+
+		if ret == QtGui.QMessageBox.Save:
+			# Save was clicked
+			print "Guardar"
+		elif ret == QtGui.QMessageBox.Discard:
+			# Don't save was clicked
+			print "Descartar"
+		elif ret == QtGui.QMessageBox.Cancel:
+			# cancel was clicked
+			print "Cancelar"
+		else:
+		# should never be reached
+			print "Error"
 		print "Eliminar Marca"
 
 	def set_listeners(self):
@@ -99,38 +123,42 @@ class Main (QtGui.QMainWindow):
 			print "tabla marca"
 	
 	def cargar_vehiculo(self):
-		productos = [[u"elantra", 1993, u"doble cabina"],
-					[u"sail", 2010, "doble cabina"],
-					[u"gallardo", 2013, "una cabina"]
+		productos = [[1, u"elantra", 1993, u"doble cabina"],
+					[2, u"sail", 2010, "doble cabina"],
+					[3, u"gallardo", 2013, "una cabina"]
 					]
 		self.ui.tabla_ve.clear()
 		self.set_headers()
 		self.ui.tabla_ve.setRowCount(len(productos))
 		r = 0
 		for row in productos:
-			item = QtGui.QTableWidgetItem(row[0])
+			item = QtGui.QTableWidgetItem(str(row[0]))
 			self.ui.tabla_ve.setItem(r,0,item)
-			item = QtGui.QTableWidgetItem(str(row[1]))
+			item = QtGui.QTableWidgetItem(row[1])
 			self.ui.tabla_ve.setItem(r,1,item)
-			item = QtGui.QTableWidgetItem(row[2])
+			item = QtGui.QTableWidgetItem(str(row[2]))
 			self.ui.tabla_ve.setItem(r,2,item)
+			item = QtGui.QTableWidgetItem(row[3])
+			self.ui.tabla_ve.setItem(r,3,item)
 			r = r+1
 	def cargar_marca(self):
-		marcas = [[u"hyundai", u"Japon", 1],
-				[u"chevrolet",u"USA",1],
-				[u"lamborghini", u"Italia", 1]
+		marcas = [[1, u"hyundai", u"Japon", 1],
+				[2, u"chevrolet",u"USA",1],
+				[3, u"lamborghini", u"Italia", 1]
 				]
 		self.ui.tabla_ma.clear()
 		self.set_headers()
 		self.ui.tabla_ma.setRowCount(len(marcas))
 		r = 0
 		for row in marcas:
-			item = QtGui.QTableWidgetItem(row[0])
+			item = QtGui.QTableWidgetItem(str(row[0]))
 			self.ui.tabla_ma.setItem(r,0,item)
 			item = QtGui.QTableWidgetItem(row[1])
 			self.ui.tabla_ma.setItem(r,1,item)
-			item = QtGui.QTableWidgetItem(str(row[2]))
+			item = QtGui.QTableWidgetItem(row[2])
 			self.ui.tabla_ma.setItem(r,2,item)
+			item = QtGui.QTableWidgetItem(str(row[3]))
+			self.ui.tabla_ma.setItem(r,3,item)
 			r = r+1
 	def set_headers(self):
 		self.ui.tabla_ve.setHorizontalHeaderLabels(self.headers_vehiculo)
