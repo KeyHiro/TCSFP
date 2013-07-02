@@ -4,12 +4,12 @@ import sqlite3 as s
 
 def __crear_tablas():
 	"""Crea las tablas del proyecto de no existir."""
-	query = """CREATE TABLE IF NOT EXIST """
+	query = """CREATE TABLE IF NOT EXISTS """
 	tablas = {
-				'marcas':"""marcas (id_marca INT AUTOINCREMENT PRIMARY KEY, nombre TEXT, pais TEXT)""",
-				'tipos':"""tipos (id_tipo INT AUTOINCREMENT PRIMARY KEY, nombre TEXT, puertas INT)""",
+				'marcas':"""marcas (id_marca INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, pais TEXT)""",
+				'tipos':"""tipos (id_tipo INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, puertas INT)""",
 				'autos':"""autos (
-								id_auto INT AUTOINCREMENT PRIMARY KEY, modelo TEXT,
+								id_auto INTEGER PRIMARY KEY AUTOINCREMENT, modelo TEXT,
 								fk_id_marca INT, fk_id_tipo INT,
 								color TEXT, motor TEXT, peso FLOAT,
 								descripcion TEXT, rendimiento INT, 
@@ -37,10 +37,7 @@ def __anyadir_auto(*args):
 	query = """INSERT INTO autos (modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, marca, tipo) 
 				VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""" 
-	try:
-		exec_db(query, list(args))
-	except:
-		print "buuuu"
+	exec_db(query, list(args))
 
 def __anyadir_marca(*args):
 	"""
@@ -49,10 +46,7 @@ def __anyadir_marca(*args):
 			(nombre, pais)
 	"""
 	query = """INSERT INTO marcas (nombre, pais) VALUES(?, ?)"""
-	try:
-		exec_db(query, list(args))
-	except:
-		print "buujuu"
+	exec_db(query, list(args))
 
 def __editar_auto(*args):
 	"""
@@ -65,10 +59,7 @@ def __editar_auto(*args):
 								motor = ?, peso = ?, descripcion = ?, rendimiento = ?, 
 								imagen = ?, fecha_creacion = ?, marca = ?, tipo = ? 
 				WHERE id_auto = ?""" 
-	try:
-		exec_db(query, list(args))
-	except:
-		print "buuuu"
+	exec_db(query, list(args))
 
 def __editar_marca(*args):
 	"""
@@ -77,10 +68,7 @@ def __editar_marca(*args):
 			(nombre, pais, id_marca)
 	"""
 	query = """UPDATE marcas SET nombre = ?, pais = ? WHERE id_marca = ?""" 
-	try:
-		exec_db(query, list(args))
-	except:
-		print "buuuu"
+	exec_db(query, list(args))
 
 def __eliminar_auto(*args):
 	"""Elimina un auto de la tabla autos"""
@@ -93,11 +81,7 @@ def __eliminar_marca(*args):
 			(id_marca)
 	"""
 	query = """DELETE FROM marca WHERE id_marca = ?"""
-	try:
-		exec_db(query, list(args))
-	except:
-		print "bujuujuu"
-	pass
+	exec_db(query, list(args))
 
 def __obtener_marcas(*args):
 	"""
@@ -107,12 +91,15 @@ def __obtener_marcas(*args):
 	"""
 	query = """SELECT * FROM marca"""
 	exec_db(query)
-	pass
 
 def ejecutar(func, *args): # cambiar el nombre
-	"""Ejecuta alguna de las funciones, dependiendo de los parametros dados"""
+	"""
+		Ejecuta alguna de las funciones, dependiendo de los parametros dados.
+		Ej:
+			ejecuta('añadir auto', modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
+				rendimiento, imagen, fecha_creacion, marca, tipo)
+	"""
 	f = {
-		'def':__crear_tablas,
 		'añadir auto':__anyadir_auto,
 		'añadir marca':__anyadir_marca,
 		'editar auto':__editar_auto,
@@ -123,6 +110,15 @@ def ejecutar(func, *args): # cambiar el nombre
 		}
 	with s.connect("autos_db.db") as conn:
 		cursor = conn.cusor()
-		global exec_db = cursor.execute 
-		f['def'](c); f[func](args) 
+		global exec_db
+		exec_db = cursor.execute
+		try:
+			__crear_tablas()
+			f[func](args)
+		except Exception as e:
+			print e.text()
+		finally:
+			return cursor.fetchall()
+
+
 	
