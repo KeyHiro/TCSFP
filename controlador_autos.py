@@ -71,8 +71,13 @@ def __editar_marca(*args):
 	exec_db(query, list(args))
 
 def __eliminar_auto(*args):
-	"""Elimina un auto de la tabla autos"""
-	pass
+	"""
+		Elimina un auto de la tabla autos
+		Se supodrá que args tendrá el siguiente formato:
+			(id_auto)
+	"""
+	query = """DELETE FROM autos WHERE id_marca = ?"""
+	exec_db(query, list(args))
 
 def __eliminar_marca(*args):
 	"""
@@ -80,7 +85,7 @@ def __eliminar_marca(*args):
 		Se supodrá que args tendrá el siguiente formato:
 			(id_marca)
 	"""
-	query = """DELETE FROM marca WHERE id_marca = ?"""
+	query = """DELETE FROM marcas WHERE id_marca = ?"""
 	exec_db(query, list(args))
 
 def __obtener_marcas(*args):
@@ -89,7 +94,16 @@ def __obtener_marcas(*args):
 		Se supodrá que args tendrá el siguiente formato:
 			(NONE)
 	"""
-	query = """SELECT * FROM marca"""
+	query = """SELECT * FROM marcas"""
+	exec_db(query)
+
+def __obtener_autos(*args):
+	"""
+		Retorna todos las autos de la tabla autos
+		Se supodrá que args tendrá el siguiente formato:
+			(NONE)
+	"""
+	query = """SELECT * FROM autos"""
 	exec_db(query)
 
 def ejecutar(func, *args): # cambiar el nombre
@@ -106,7 +120,8 @@ def ejecutar(func, *args): # cambiar el nombre
 		'editar marca':__editar_marca,
 		'eliminar auto':__eliminar_auto,
 		'eliminar marca':__eliminar_marca,
-		'obtener marcas':__obtener_marcas
+		'obtener marcas':__obtener_marcas,
+		'obtener autos':__obtener_autos
 		}
 	with s.connect("autos_db.db") as conn:
 		cursor = conn.cusor()
