@@ -30,14 +30,13 @@ def __anyadir_auto(*args):
 	"""
 		Anyade un auto a la tabla autos.
 		Se supodrá que args tendrá el siguiente formato:
-			(modelo, id_marca, id_tipo, color, motor, peso, descripcion, 
+			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, marca, tipo)
 	"""
-	# SON 11 !!!
-	query = """INSERT INTO autos (modelo, id_marca, id_tipo, color, motor,
-								 peso, descripcion, rendimiento, imagen,
-								 fecha_creacion, marca, tipo)
-			    VALUES(?,?,?,?,?,?,?,?,?,?,?)""" 
+	# SON 12 !!!
+	query = """INSERT INTO autos (modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
+				rendimiento, imagen, fecha_creacion, marca, tipo) 
+				VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""" 
 	try:
 		exec_db(query, list(args))
 	except:
@@ -50,37 +49,80 @@ def __anyadir_marca(*args):
 			(nombre, pais)
 	"""
 	query = """INSERT INTO marcas (nombre, pais) VALUES(?, ?)"""
-	exec_db(query, list(args))
+	try:
+		exec_db(query, list(args))
+	except:
+		print "buujuu"
 
 def __editar_auto(*args):
-	"""Actualiza los campos de un auto en la tabla autos"""
-	pass
+	"""
+		Actualiza los campos de un auto en la tabla autos
+		Se supodrá que args tendrá el siguiente formato:
+			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
+				rendimiento, imagen, fecha_creacion, marca, tipo, id_auto)
+	"""
+	query = """UPDATE autos SET modelo = ?, fk_id_marca = ?, fk_id_tipo = ?, color = ?, 
+								motor = ?, peso = ?, descripcion = ?, rendimiento = ?, 
+								imagen = ?, fecha_creacion = ?, marca = ?, tipo = ? 
+				WHERE id_auto = ?""" 
+	try:
+		exec_db(query, list(args))
+	except:
+		print "buuuu"
 
 def __editar_marca(*args):
-	"""Actualiza los campos de una marca en la tabla marcas"""
-	pass
+	"""
+		Actualiza los campos de un auto en la tabla autos
+		Se supodrá que args tendrá el siguiente formato:
+			(nombre, pais, id_marca)
+	"""
+	query = """UPDATE marcas SET nombre = ?, pais = ? WHERE id_marca = ?""" 
+	try:
+		exec_db(query, list(args))
+	except:
+		print "buuuu"
 
 def __eliminar_auto(*args):
 	"""Elimina un auto de la tabla autos"""
 	pass
 
 def __eliminar_marca(*args):
-	"""Elimina una marca de la tabla marcas"""
+	"""
+		Elimina una marca de la tabla marcas
+		Se supodrá que args tendrá el siguiente formato:
+			(id_marca)
+	"""
+	query = """DELETE FROM marca WHERE id_marca = ?"""
+	try:
+		exec_db(query, list(args))
+	except:
+		print "bujuujuu"
+	pass
+
+def __obtener_marcas(*args):
+	"""
+		Retorna todas las marcas de la tabla marcas
+		Se supodrá que args tendrá el siguiente formato:
+			(NONE)
+	"""
+	query = """SELECT * FROM marca"""
+	exec_db(query)
 	pass
 
 def ejecutar(func, *args): # cambiar el nombre
 	"""Ejecuta alguna de las funciones, dependiendo de los parametros dados"""
-	f = [
-		__crear_tablas,
-		__anyadir_auto,
-		__anyadir_marca,
-		__editar_auto,
-		__editar_marca,
-		__eliminar_auto,
-		__eliminar_marca
-		]
+	f = {
+		'def':__crear_tablas,
+		'añadir auto':__anyadir_auto,
+		'añadir marca':__anyadir_marca,
+		'editar auto':__editar_auto,
+		'editar marca':__editar_marca,
+		'eliminar auto':__eliminar_auto,
+		'eliminar marca':__eliminar_marca,
+		'obtener marcas':__obtener_marcas
+		}
 	with s.connect("autos_db.db") as conn:
 		cursor = conn.cusor()
 		global exec_db = cursor.execute 
-		f[0](c); f[func](args) 
+		f['def'](c); f[func](args) 
 	
