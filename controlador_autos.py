@@ -30,13 +30,18 @@ def __crear_tablas():
 def __anyadir_auto(args):
 	"""
 		Anyade un auto a la tabla autos.
+		La fecha de creacion debe ser un string con el siguiente
+		formato:
+			'AAAA-MM-DD'
+		ej:
+			'2013-03-05'
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, marca, tipo)
 	"""
 	# SON 10 !!!
 	query = """INSERT INTO autos (modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, fecha_creacion) 
+				rendimiento, imagen, DATE(fecha_creacion)) 
 				VALUES(?,?,?,?,?,?,?,?,?,?)""" 
 	exec_db(query, args)
 
@@ -62,7 +67,12 @@ def __anyadir_tipo(args):
 
 def __editar_auto(args):
 	"""
-		Actualiza los campos de un auto en la tabla autos
+		Actualiza los campos de un auto en la tabla autos.
+		La fecha de creacion debe ser un string con el siguiente
+		formato:
+			'AAAA-MM-DD'
+		ej:
+			'2013-03-05'
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, id_auto)
@@ -209,7 +219,7 @@ def ejecutar(func, args): # cambiar el nombre
 		'obtener típo':__obtener_tipo,
 		'contar autos':__contar_autos_por_marca,
 		'buscar marca':__buscar_marca,
-		'buscar auto';__buscar_auto
+		'buscar auto':__buscar_auto
 		}
 	with s.connect("autos_db.db") as conn:
 		cursor = conn.cursor()
