@@ -11,7 +11,7 @@ def __crear_tablas():
 				'autos':"""autos (
 								id_auto INTEGER PRIMARY KEY AUTOINCREMENT, modelo TEXT,
 								fk_id_marca INT, fk_id_tipo INT,
-								color TEXT, motor TEXT, peso FLOAT,
+								color TEXT, motor FLOAT, peso FLOAT,
 								descripcion TEXT, rendimiento INT, 
 								imagen TEXT, fecha_creacion DATE, 
 								FOREIGN KEY (fk_id_marca) REFERENCES marcas (id_marca) 
