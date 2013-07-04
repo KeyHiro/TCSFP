@@ -18,6 +18,7 @@ def __crear_tablas():
 														ON UPDATE CASCADE ON DELETE RESTRICT,
 								FOREIGN KEY (fk_id_tipo) REFERENCES tipos (id_tipo)
 														ON UPDATE CASCADE ON DELETE RESTRICT
+								)
 								""" 
 			}
 	## El profe recomienda que cuando el usuario seleccione la imagen,
@@ -26,69 +27,110 @@ def __crear_tablas():
 	exec_db(query + tablas['tipos'])
 	exec_db(query + tablas['autos'])
 
-def __anyadir_auto(*args):
+def __anyadir_auto(args):
 	"""
 		Anyade un auto a la tabla autos.
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, marca, tipo)
 	"""
-	# SON 12 !!!
+	# SON 10 !!!
 	query = """INSERT INTO autos (modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, fecha_creacion, marca, tipo) 
-				VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""" 
-	exec_db(query, list(args))
+				rendimiento, imagen, fecha_creacion) 
+				VALUES(?,?,?,?,?,?,?,?,?,?)""" 
+	exec_db(query, args)
 
-def __anyadir_marca(*args):
+def __anyadir_marca(args):
 	"""
 		Anyade un marca a la tabla marcas.
 		Se supodrá que args tendrá el siguiente formato:
 			(nombre, pais)
 	"""
 	query = """INSERT INTO marcas (nombre, pais) VALUES(?, ?)"""
-	exec_db(query, list(args))
+	exec_db(query, args)
 
-def __editar_auto(*args):
+def __anyadir_tipo(args):
+	"""
+		Anyade un tipo a la tabla tipos.
+		Se supodrá que args tendrá el siguiente formato:
+			(nombre, puertas)
+	"""
+	# SON 12 !!!
+	query = """INSERT INTO tipos (nombre, puertas) 
+				VALUES(?, ?)""" 
+	exec_db(query, args)
+
+def __editar_auto(args):
 	"""
 		Actualiza los campos de un auto en la tabla autos
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, fecha_creacion, marca, tipo, id_auto)
+				rendimiento, imagen, fecha_creacion, id_auto)
 	"""
 	query = """UPDATE autos SET modelo = ?, fk_id_marca = ?, fk_id_tipo = ?, color = ?, 
 								motor = ?, peso = ?, descripcion = ?, rendimiento = ?, 
-								imagen = ?, fecha_creacion = ?, marca = ?, tipo = ? 
+								imagen = ?, fecha_creacion = ? 
 				WHERE id_auto = ?""" 
-	exec_db(query, list(args))
+	exec_db(query, args)
 
-def __editar_marca(*args):
+def __editar_marca(args):
 	"""
 		Actualiza los campos de un auto en la tabla autos
 		Se supodrá que args tendrá el siguiente formato:
 			(nombre, pais, id_marca)
 	"""
 	query = """UPDATE marcas SET nombre = ?, pais = ? WHERE id_marca = ?""" 
-	exec_db(query, list(args))
+	exec_db(query, args)
 
-def __eliminar_auto(*args):
+def __eliminar_auto(args):
 	"""
 		Elimina un auto de la tabla autos
 		Se supodrá que args tendrá el siguiente formato:
 			(id_auto)
 	"""
 	query = """DELETE FROM autos WHERE id_marca = ?"""
-	exec_db(query, list(args))
+	exec_db(query, args)
 
-def __eliminar_marca(*args):
+def __eliminar_marca(args):
 	"""
 		Elimina una marca de la tabla marcas
 		Se supodrá que args tendrá el siguiente formato:
 			(id_marca)
 	"""
 	query = """DELETE FROM marcas WHERE id_marca = ?"""
-	exec_db(query, list(args))
+	exec_db(query, args)
 
-def __obtener_marcas(*args):
+def __obtener_marca(args):
+	"""
+		Retorna la marca de la tabla marcas cuya id_marca sea igual
+		al parámetro entregado.
+		Se supodrá que args tendrá el siguiente formato:
+			(id_marca)
+	"""
+	query = """SELECT * FROM marcas WHERE id_marca = ?"""
+	exec_db(query, args)
+
+def __obtener_auto(args):
+	"""
+		Retorna el auto de la tabla autos cuyo id_auto sea igual
+		al parámetro entregado.
+		Se supodrá que args tendrá el siguiente formato:
+			(id_auto)
+	"""
+	query = """SELECT * FROM autos WHERE id_auto = ?"""
+	exec_db(query, args)
+
+def __obtener_tipo(args):
+	"""
+		Retorna el tipo de la tabla tipos cuyo id_tipo sea igual
+		al parámetro entregado.
+		Se supodrá que args tendrá el siguiente formato:
+			(id_tipo)
+	"""
+	query = """SELECT * FROM tipos WHERE id_tipo = ?"""
+	exec_db(query, args)
+
+def __obtener_marcas(args):
 	"""
 		Retorna todas las marcas de la tabla marcas
 		Se supodrá que args tendrá el siguiente formato:
@@ -97,34 +139,59 @@ def __obtener_marcas(*args):
 	query = """SELECT * FROM marcas"""
 	exec_db(query)
 
-def __obtener_autos(*args):
+def __obtener_autos(args):
 	"""
-		Retorna todos las autos de la tabla autos
+		Retorna todos los autos de la tabla autos
 		Se supodrá que args tendrá el siguiente formato:
 			(NONE)
 	"""
 	query = """SELECT * FROM autos"""
 	exec_db(query)
 
-def ejecutar(func, *args): # cambiar el nombre
+def __obtener_tipos(args):
+	"""
+		Retorna todos las tipos de la tabla tipos
+		Se supodrá que args tendrá el siguiente formato:
+			(NONE)
+	"""
+	query = """SELECT * FROM tipos"""
+	exec_db(query)
+
+def __contar_autos_por_marca(args):
+	"""
+		Cuenta la cantidad de autos de una determinada
+		marca.
+		Se supodrá que args tendrá el siguiente formato:
+			(id_marca)
+	"""
+	query = """SELECT COUNT(fk_id_marca) FROM autos WHERE fk_id_marca = ?"""
+	exec_db(query, args)
+
+def ejecutar(func, args): # cambiar el nombre
 	"""
 		Ejecuta alguna de las funciones, dependiendo de los parametros dados.
 		Ej:
-			ejecuta('añadir auto', modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, fecha_creacion, marca, tipo)
+			ejecuta('añadir auto', [modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
+				rendimiento, imagen, fecha_creacion, marca, tipo])
 	"""
 	f = {
 		'añadir auto':__anyadir_auto,
 		'añadir marca':__anyadir_marca,
+		'añadir tipo':__anyadir_tipo,
 		'editar auto':__editar_auto,
 		'editar marca':__editar_marca,
 		'eliminar auto':__eliminar_auto,
 		'eliminar marca':__eliminar_marca,
 		'obtener marcas':__obtener_marcas,
-		'obtener autos':__obtener_autos
+		'obtener autos':__obtener_autos,
+		'obtener tipos':__obtener_tipos,
+		'obtener marca':__obtener_marca,
+		'obtener auto':__obtener_auto,
+		'obtener típo':__obtener_tipo,
+		'contar autos':__contar_autos_por_marca
 		}
 	with s.connect("autos_db.db") as conn:
-		cursor = conn.cusor()
+		cursor = conn.cursor()
 		global exec_db
 		exec_db = cursor.execute
 		try:
