@@ -167,6 +167,25 @@ def __contar_autos_por_marca(args):
 	query = """SELECT COUNT(fk_id_marca) FROM autos WHERE fk_id_marca = ?"""
 	exec_db(query, args)
 
+def __buscar_auto(args):
+	query = """SELECT a.id_auto	FROM autos a WHERE  
+				a.modelo LIKE '%'||?||'%' OR 
+				a.color LIKE '%'||?||'%' OR 
+				a.motor LIKE '%'||?||'%' OR 
+				a.peso LIKE '%'||?||'%' OR 
+				a.descripcion LIKE '%'||?||'%' OR 
+				a.rendimiento LIKE '%'||?||'%' OR 
+				a.fecha_creacion LIKE '%'||?||'%' 
+			"""
+	exec_db(query, [args]*7)
+
+def __buscar_marca(args):
+	query = """SELECT m.id_marca FROM marcas m WHERE  
+				m.nombre LIKE '%'||?||'%' OR 
+				m.pais LIKE '%'||?||'%'
+			"""
+	exec_db(query, [args]*2)
+
 def ejecutar(func, args): # cambiar el nombre
 	"""
 		Ejecuta alguna de las funciones, dependiendo de los parametros dados.
@@ -188,7 +207,9 @@ def ejecutar(func, args): # cambiar el nombre
 		'obtener marca':__obtener_marca,
 		'obtener auto':__obtener_auto,
 		'obtener típo':__obtener_tipo,
-		'contar autos':__contar_autos_por_marca
+		'contar autos':__contar_autos_por_marca,
+		'buscar marca':__buscar_marca,
+		'buscar auto';__buscar_auto
 		}
 	with s.connect("autos_db.db") as conn:
 		cursor = conn.cursor()
@@ -203,4 +224,3 @@ def ejecutar(func, args): # cambiar el nombre
 			return cursor.fetchall()
 
 
-	
