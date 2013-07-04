@@ -33,7 +33,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_ve">
      <attribute name="title">
@@ -66,9 +66,17 @@
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ContiguousSelection</enum>
+      </property>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
+      <column>
+       <property name="text">
+        <string>id_auto</string>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>Modelo</string>
@@ -169,9 +177,17 @@
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ContiguousSelection</enum>
+      </property>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
+      <column>
+       <property name="text">
+        <string>id_marca</string>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>Nombre</string>
