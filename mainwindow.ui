@@ -33,7 +33,7 @@
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_ve">
      <attribute name="title">
@@ -80,6 +80,11 @@
       <column>
        <property name="text">
         <string>Modelo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Marca</string>
        </property>
       </column>
       <column>

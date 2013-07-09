@@ -11,7 +11,7 @@ def __crear_tablas():
 				'autos':"""autos (
 								id_auto INTEGER PRIMARY KEY AUTOINCREMENT, modelo TEXT,
 								fk_id_marca INT, fk_id_tipo INT,
-								color TEXT, motor FLOAT, peso FLOAT,
+								color TEXT, motor TEXT, peso FLOAT,
 								descripcion TEXT, rendimiento INT, 
 								imagen TEXT, fecha_creacion DATE, 
 								FOREIGN KEY (fk_id_marca) REFERENCES marcas (id_marca) 
@@ -26,22 +26,51 @@ def __crear_tablas():
 	exec_db(query + tablas['marcas']) #son mas lineas lo sé... pero me guta como se vé (me salió un verso sin esfuerzo)
 	exec_db(query + tablas['tipos'])
 	exec_db(query + tablas['autos'])
+def __buscar_auto(args):
+	"""
+		Busca en la tabla autos los que cumplan las condiciones 
+		de similitud?.
+		Se supodrá que args tendrá el siguiente formato:
+			(palabra)
+	"""
+	query = """SELECT a.id_auto	FROM autos a, marcas m, tipos t WHERE  
+				a.fk_id_marca = m.id_marca AND
+				a.fk_id_tipo = t.id_tipo AND
+				(a.modelo LIKE '%'||?||'%' OR 
+				a.color LIKE '%'||?||'%' OR 
+				a.motor LIKE '%'||?||'%' OR 
+				a.peso LIKE '%'||?||'%' OR 
+				a.descripcion LIKE '%'||?||'%' OR 
+				a.rendimiento LIKE '%'||?||'%' OR 
+				a.fecha_creacion LIKE '%'||?||'%' OR
+				m.nombre LIKE '%'||?||'%' OR
+				t.nombre LIKE '%'||?||'%')
+			"""
+	exec_db(query, [args]*9)
+
+def __buscar_marca(args):
+	"""
+		Busca en la tabla marcas las que cumplan las condiciones 
+		de similitud?.
+		Se supodrá que args tendrá el siguiente formato:
+			(palabra)
+	"""
+	query = """SELECT m.id_marca FROM marcas m WHERE  
+				m.nombre LIKE '%'||?||'%' OR 
+				m.pais LIKE '%'||?||'%'
+			"""
+	exec_db(query, [args]*2)
 
 def __anyadir_auto(args):
 	"""
 		Anyade un auto a la tabla autos.
-		La fecha de creacion debe ser un string con el siguiente
-		formato:
-			'AAAA-MM-DD'
-		ej:
-			'2013-03-05'
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, fecha_creacion, marca, tipo)
+				rendimiento, imagen, fecha_creacion)
 	"""
-	# SON 10 !!!
+	# SON 12 !!!
 	query = """INSERT INTO autos (modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
-				rendimiento, imagen, DATE(fecha_creacion)) 
+				rendimiento, imagen, fecha_creacion) 
 				VALUES(?,?,?,?,?,?,?,?,?,?)""" 
 	exec_db(query, args)
 
@@ -67,12 +96,7 @@ def __anyadir_tipo(args):
 
 def __editar_auto(args):
 	"""
-		Actualiza los campos de un auto en la tabla autos.
-		La fecha de creacion debe ser un string con el siguiente
-		formato:
-			'AAAA-MM-DD'
-		ej:
-			'2013-03-05'
+		Actualiza los campos de un auto en la tabla autos
 		Se supodrá que args tendrá el siguiente formato:
 			(modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion, 
 				rendimiento, imagen, fecha_creacion, id_auto)
@@ -98,7 +122,7 @@ def __eliminar_auto(args):
 		Se supodrá que args tendrá el siguiente formato:
 			(id_auto)
 	"""
-	query = """DELETE FROM autos WHERE id_marca = ?"""
+	query = """DELETE FROM autos WHERE id_auto = ?"""
 	exec_db(query, args)
 
 def __eliminar_marca(args):
@@ -118,7 +142,9 @@ def __obtener_marca(args):
 			(id_marca)
 	"""
 	query = """SELECT * FROM marcas WHERE id_marca = ?"""
+
 	exec_db(query, args)
+
 
 def __obtener_auto(args):
 	"""
@@ -137,7 +163,7 @@ def __obtener_tipo(args):
 		Se supodrá que args tendrá el siguiente formato:
 			(id_tipo)
 	"""
-	query = """SELECT * FROM tipos WHERE id_tipo = ?"""
+	query = """SELECT nombre FROM tipos WHERE id_tipo = ?"""
 	exec_db(query, args)
 
 def __obtener_marcas(args):
@@ -177,39 +203,6 @@ def __contar_autos_por_marca(args):
 	query = """SELECT COUNT(fk_id_marca) FROM autos WHERE fk_id_marca = ?"""
 	exec_db(query, args)
 
-def __buscar_auto(args):
-	"""
-		Busca en la tabla autos los que cumplan las condiciones 
-		de similitud?.
-		Se supodrá que args tendrá el siguiente formato:
-			(palabra)
-	"""
-	query = """SELECT a.id_auto	FROM autos a, marcas m, tipos t WHERE  
-				a.modelo LIKE '%'||?||'%' OR 
-				a.color LIKE '%'||?||'%' OR 
-				a.motor LIKE '%'||?||'%' OR 
-				a.peso LIKE '%'||?||'%' OR 
-				a.descripcion LIKE '%'||?||'%' OR 
-				a.rendimiento LIKE '%'||?||'%' OR 
-				a.fecha_creacion LIKE '%'||?||'%' OR
-				m.nombre LIKE '%'||?||'%' AND m.id_marca == a.fk_id_marca OR
-				t.nombre LIKE '%'||?||'%' AND t.id_tipo == a.fk_id_tipo
-			"""
-	exec_db(query, [args]*9)
-
-def __buscar_marca(args):
-	"""
-		Busca en la tabla marcas las que cumplan las condiciones 
-		de similitud?.
-		Se supodrá que args tendrá el siguiente formato:
-			(palabra)
-	"""
-	query = """SELECT m.id_marca FROM marcas m WHERE  
-				m.nombre LIKE '%'||?||'%' OR 
-				m.pais LIKE '%'||?||'%'
-			"""
-	exec_db(query, [args]*2)
-
 def ejecutar(func, args): # cambiar el nombre
 	"""
 		Ejecuta alguna de las funciones, dependiendo de los parametros dados.
@@ -230,7 +223,7 @@ def ejecutar(func, args): # cambiar el nombre
 		'obtener tipos':__obtener_tipos,
 		'obtener marca':__obtener_marca,
 		'obtener auto':__obtener_auto,
-		'obtener típo':__obtener_tipo,
+		'obtener tipo':__obtener_tipo,
 		'contar autos':__contar_autos_por_marca,
 		'buscar marca':__buscar_marca,
 		'buscar auto':__buscar_auto
@@ -243,8 +236,9 @@ def ejecutar(func, args): # cambiar el nombre
 			__crear_tablas()
 			f[func](args)
 		except Exception as e:
-			print e.text()
+			print e.args[0]
 		finally:
-			return cursor.fetchall()
+			resultado = cursor.fetchall()
+			return resultado
 
-
+	
