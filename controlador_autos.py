@@ -178,18 +178,32 @@ def __contar_autos_por_marca(args):
 	exec_db(query, args)
 
 def __buscar_auto(args):
-	query = """SELECT a.id_auto	FROM autos a WHERE  
+	"""
+		Busca en la tabla autos los que cumplan las condiciones 
+		de similitud?.
+		Se supodrá que args tendrá el siguiente formato:
+			(palabra)
+	"""
+	query = """SELECT a.id_auto	FROM autos a, marcas m, tipos t WHERE  
 				a.modelo LIKE '%'||?||'%' OR 
 				a.color LIKE '%'||?||'%' OR 
 				a.motor LIKE '%'||?||'%' OR 
 				a.peso LIKE '%'||?||'%' OR 
 				a.descripcion LIKE '%'||?||'%' OR 
 				a.rendimiento LIKE '%'||?||'%' OR 
-				a.fecha_creacion LIKE '%'||?||'%' 
+				a.fecha_creacion LIKE '%'||?||'%' OR
+				m.nombre LIKE '%'||?||'%' AND m.id_marca == a.fk_id_marca OR
+				t.nombre LIKE '%'||?||'%' AND t.id_tipo == a.fk_id_tipo
 			"""
-	exec_db(query, [args]*7)
+	exec_db(query, [args]*9)
 
 def __buscar_marca(args):
+	"""
+		Busca en la tabla marcas las que cumplan las condiciones 
+		de similitud?.
+		Se supodrá que args tendrá el siguiente formato:
+			(palabra)
+	"""
 	query = """SELECT m.id_marca FROM marcas m WHERE  
 				m.nombre LIKE '%'||?||'%' OR 
 				m.pais LIKE '%'||?||'%'
