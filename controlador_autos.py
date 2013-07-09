@@ -192,8 +192,10 @@ def __buscar_auto(args):
 				a.descripcion LIKE '%'||?||'%' OR 
 				a.rendimiento LIKE '%'||?||'%' OR 
 				a.fecha_creacion LIKE '%'||?||'%' OR
-				m.nombre LIKE '%'||?||'%' AND m.id_marca == a.fk_id_marca OR
-				t.nombre LIKE '%'||?||'%' AND t.id_tipo == a.fk_id_tipo
+				m.nombre LIKE '%'||?||'%' OR 
+				t.nombre LIKE '%'||?||'%' AND 
+				t.id_tipo == a.fk_id_tipo AND 
+				m.id_marca == a.fk_id_marca
 			"""
 	exec_db(query, [args]*9)
 
