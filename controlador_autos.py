@@ -242,16 +242,3 @@ def ejecutar(func, args): # cambiar el nombre
 			return resultado
 
 
-    Status
-    API
-    Training
-    Shop
-    Blog
-    About
-
-    © 2013 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Contact
-
