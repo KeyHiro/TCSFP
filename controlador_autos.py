@@ -9,15 +9,15 @@ def __crear_tablas():
 			'marcas':"""marcas (id_marca INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, pais TEXT)""",
 			'tipos':"""tipos (id_tipo INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, puertas INT)""",
 			'autos':"""autos (
-			id_auto INTEGER PRIMARY KEY AUTOINCREMENT, modelo TEXT,
-			fk_id_marca INT, fk_id_tipo INT,
-			color TEXT, motor TEXT, peso FLOAT,
-			descripcion TEXT, rendimiento INT,
-			imagen TEXT, fecha_creacion DATE,
-			FOREIGN KEY (fk_id_marca) REFERENCES marcas (id_marca)
-			ON UPDATE CASCADE ON DELETE RESTRICT,
-			FOREIGN KEY (fk_id_tipo) REFERENCES tipos (id_tipo)
-			ON UPDATE CASCADE ON DELETE RESTRICT
+							id_auto INTEGER PRIMARY KEY AUTOINCREMENT, modelo TEXT,
+							fk_id_marca INT, fk_id_tipo INT,
+							color TEXT, motor TEXT, peso FLOAT,
+							descripcion TEXT, rendimiento INT,
+							imagen TEXT, fecha_creacion DATE,
+							FOREIGN KEY (fk_id_marca) REFERENCES marcas (id_marca)
+							ON UPDATE CASCADE ON DELETE RESTRICT,
+							FOREIGN KEY (fk_id_tipo) REFERENCES tipos (id_tipo)
+							ON UPDATE CASCADE ON DELETE RESTRICT
 			)
 			"""
 	}
@@ -26,6 +26,7 @@ def __crear_tablas():
 	exec_db(query + tablas['marcas']) #son mas lineas lo sé... pero me guta como se vé (me salió un verso sin esfuerzo)
 	exec_db(query + tablas['tipos'])
 	exec_db(query + tablas['autos'])
+
 def __buscar_auto(args):
 	"""
 	Busca en la tabla autos los que cumplan las condiciones
@@ -142,9 +143,7 @@ def __obtener_marca(args):
 	(id_marca)
 	"""
 	query = """SELECT * FROM marcas WHERE id_marca = ?"""
-
 	exec_db(query, args)
-
 
 def __obtener_auto(args):
 	"""
