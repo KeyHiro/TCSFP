@@ -37,10 +37,10 @@ class FormMarca(QtGui.QDialog):
 					self.ui.le_pais.text()
 					]
 
-				
-		self.result = True
-		self.accept()
-		self.parent.setEnabled(True)
+		if self.ui.le_nom.text() != "" and self.ui.le_pais.text() != "":
+			self.result = True
+			self.accept()
+			self.parent.setEnabled(True)
 
 	def closeEvent(self, event):
 		self.parent.setEnabled(True)

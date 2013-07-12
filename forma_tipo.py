@@ -33,9 +33,11 @@ class FormTipo(QtGui.QDialog):
 		if(self.trigger == "Nuevo"):
 			self.tipo = [self.ui.le_nom.text(),
 						self.ui.sb_puertas.textFromValue(self.ui.sb_puertas.value())]
-		self.result = True
-		self.accept()
-		self.parent.setEnabled(True)
+		
+		if self.ui.le_nom.text() != "" :
+			self.result = True
+			self.accept()
+			self.parent.setEnabled(True)
 	
 	def closeEvent(self, event):
 		self.parent.setEnabled(True)

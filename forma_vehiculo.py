@@ -25,6 +25,8 @@ class FormVehiculo(QtGui.QDialog):
 		self.trigger = trigger
 		self.ui =  Ui_Dialog()
 		self.ui.setupUi(self)
+		self.ui.le_peso.setValidator(QtGui.QDoubleValidator())
+		self.ui.le_rendimiento.setValidator(QtGui.QIntValidator())
 
 		marcas = controlador('obtener marcas', None)
 		for marca in marcas:
@@ -142,7 +144,9 @@ class FormVehiculo(QtGui.QDialog):
 						nombre_archivo,
 						fecha
 						]
-		if id_marca!=None and id_tipo!=None:
+		if (id_marca!=None and id_tipo!=None and self.ui.le_color.text()!="" 
+			and self.ui.le_motor.text()!="" and self.ui.le_peso.text()!="" 
+			and self.ui.le_rendimiento.text()!=""):
 			#if self.trigger == "Nuevo":
 			try:
 				shutil.copy2(self.ui.le_imagen.text(), self.parent.dir)
