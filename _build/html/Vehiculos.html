@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Vehiculos.py &mdash; Trabajo Final Vehiculos 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Trabajo Final Vehiculos 1.0.0 documentation" href="index.html" />
+    <link rel="up" title="Codigos" href="Codigo.html" />
+    <link rel="next" title="forma_vehiculo.py" href="forma_vehiculo.html" />
+    <link rel="prev" title="Codigos" href="Codigo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forma_vehiculo.html" title="forma_vehiculo.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Codigo.html" title="Codigos"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Trabajo Final Vehiculos 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="Codigo.html" accesskey="U">Codigos</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-Vehiculos">
+<span id="vehiculos-py"></span><h1>Vehiculos.py<a class="headerlink" href="#module-Vehiculos" title="Permalink to this headline">¶</a></h1>
+<p>Programa Vehiculos.py</p>
+<dl class="class">
+<dt id="Vehiculos.Main">
+<em class="property">class </em><tt class="descclassname">Vehiculos.</tt><tt class="descname">Main</tt><a class="headerlink" href="#Vehiculos.Main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Esta es la clase principal que se encarga de mostrar y mantener los elementos gráficos.
+Importa dos formularios externos (para marcas y autos), y el &#8216;controlador_autos&#8217; que
+administra el funcionamiento de la base de datos de los autos.</p>
+<dl class="method">
+<dt id="Vehiculos.Main.cargar_marca">
+<tt class="descname">cargar_marca</tt><big>(</big><em>id_marca=None</em><big>)</big><a class="headerlink" href="#Vehiculos.Main.cargar_marca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Administra las filas de la tabla marcas. 
+Si el parámetro id_marca es None, se trabajará con todas las marcas, 
+de lo contrario, el método mismo, buscará las marcas necesarias.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.cargar_marca_por_busqueda">
+<tt class="descname">cargar_marca_por_busqueda</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.cargar_marca_por_busqueda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde a la edicion de texto en el campo de busqueda de 
+la pestaña donde se muestra la tabla de marcas,
+desplagando en la misma las filas que contengan campos que coincidan 
+con el texto que se haya ingresado.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.cargar_vehiculo">
+<tt class="descname">cargar_vehiculo</tt><big>(</big><em>id_vehiculo=None</em><big>)</big><a class="headerlink" href="#Vehiculos.Main.cargar_vehiculo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Administra las filas de la tabla autos. 
+Si el parámetro id_vehiculo es None, se trabajará con todos las autos, 
+de lo contrario, el método mismo, buscará los autos necesarias.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.cargar_vehiculo_por_busqueda">
+<tt class="descname">cargar_vehiculo_por_busqueda</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.cargar_vehiculo_por_busqueda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde a la edicion de texto en el campo de busqueda de 
+la pestaña donde se muestra la tabla de autoss,
+desplagando en la misma las filas que contengan campos que coincidan 
+con el texto que se haya ingresado.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.create_folder">
+<tt class="descname">create_folder</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.create_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revisa si existe el directorio donde se guerdan los respaldos de las imagenes de 
+los autos. De no existir, la crea y lo reporta mediante un mensaje.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.editar_ma">
+<tt class="descname">editar_ma</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.editar_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se ejecuta cuando se presiona el boton &#8216;Editar Marca&#8217; de la pestaña Marcas,
+solo si se han seleccionado elementos en la tabla. Muestra un QDialog con 
+los campos de texto necesarios para que se acutualicen los datos de la marca, esto 
+por cada elemento seleccionado.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.editar_ve">
+<tt class="descname">editar_ve</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.editar_ve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se ejecuta cuando se presiona el boton &#8216;Editar Auto&#8217; de la pestaña Autos,
+solo si se han seleccionado elementos en la tabla. Muestra un QDialog con 
+los campos de texto necesarios para que se acutualicen los datos del auto, esto 
+por cada elemento seleccionado.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.eliminar_ma">
+<tt class="descname">eliminar_ma</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.eliminar_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se ejecuta cuando se presiona el boton &#8216;Eliminar en la pestaña de marcas
+cuando se ha seleccionado uno o más elementos de la tabla. Se Abre un QDialog
+que muestra la cantidad de filas seleccionadas que busca confirmar la desición de 
+elimiar la o las marcas seleccionadas en la tabla. Si existen autos de esa marca, 
+el proceso se interrumpe informando la cantidad de autos asiciados a 
+cada marca que no se pudo eliminar.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.eliminar_ve">
+<tt class="descname">eliminar_ve</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.eliminar_ve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se ejecuta cuando se presiona el boton &#8216;Eliminar Auto&#8217; en la pestaña de autos
+cuando se ha seleccionado uno o más elementos de la tabla. Se Abre un QDialog
+que muestra la cantidad de filas seleccionadas que busca confirmar la desición de 
+elimiar el o los autos seleccionados en la tabla.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.get_headers">
+<tt class="descname">get_headers</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Guarda los nombres de las columnas de ambas tablas en variables de la clase 
+para posterior referecia.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.muestra_imagen">
+<tt class="descname">muestra_imagen</tt><big>(</big><em>row</em>, <em>column</em><big>)</big><a class="headerlink" href="#Vehiculos.Main.muestra_imagen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responde cuando se hace doble click en alguna celda de la tabla autos,
+desplagando en un QDialog la image del auto de la fila donde se encuentra la celda 
+clickeada</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.nuevo_ma">
+<tt class="descname">nuevo_ma</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.nuevo_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un QDialog en respuesta al boton &#8216;Nueva Marca&#8217; de la pestaña Marcas,
+en el cual aparecen los campos de texto necesarios para ingresar una nueva marca.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.nuevo_ve">
+<tt class="descname">nuevo_ve</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.nuevo_ve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Muestra un QDialog en respuesta al boton &#8216;Nuevo Auto&#8217; de la pestaña Autos,
+en el cual aparecen los campos de texto necesarios para ingresar un nuevo auto,
+mostrando con QComboBox las marcas y tipos existentes, permitiendo agregar
+una nueva marca o un nuevo tipo. Tambien permite buscar la imagen del auto mediante
+un explorador de  carpetas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.seleccion_ma">
+<tt class="descname">seleccion_ma</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.seleccion_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Habilita los botones &#8216;eliminar&#8217; y &#8216;editar&#8217; cuando se seleccionan
+uno o más elementos de la tabla marcas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.seleccion_ve">
+<tt class="descname">seleccion_ve</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.seleccion_ve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Habilita los botones &#8216;eliminar&#8217; y &#8216;editar&#8217; cuando se seleccionan
+uno o más elementos de la tabla autoss.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.set_headers">
+<tt class="descname">set_headers</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.set_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establece los nombres de las columnas de las tablas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.set_listeners">
+<tt class="descname">set_listeners</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.set_listeners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establece los metodos que reaccionan ante el cambio de pestaña, la edición de texto
+en el buscador, la selección de items en los QComboBox, y el doble click en las tablas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.set_signals">
+<tt class="descname">set_signals</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.set_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establece las conecciones entre las señales emitidas al presionar un boton,
+con los metodos que deban reaccionar a estas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Vehiculos.Main.tab_cambio">
+<tt class="descname">tab_cambio</tt><big>(</big><big>)</big><a class="headerlink" href="#Vehiculos.Main.tab_cambio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifica el comportamiento de las pestañas para que 
+actualicen sus contenidos cuando se navega entre ellas.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Codigo.html"
+                        title="previous chapter">Codigos</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="forma_vehiculo.html"
+                        title="next chapter">forma_vehiculo.py</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/Vehiculos.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forma_vehiculo.html" title="forma_vehiculo.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Codigo.html" title="Codigos"
+             >previous</a> |</li>
+        <li><a href="index.html">Trabajo Final Vehiculos 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="Codigo.html" >Codigos</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Grupo 3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

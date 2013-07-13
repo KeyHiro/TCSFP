@@ -1,0 +1,12 @@
+===========================================
+Codigos
+===========================================
+
+.. toctree::
+   :maxdepth: 5
+
+   Vehiculos
+   forma_vehiculo
+   forma_marca
+   forma_tipo
+   controlador_autos

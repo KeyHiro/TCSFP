@@ -1,0 +1,24 @@
+.. Trabajo Final Vehiculos documentation master file, created by
+   sphinx-quickstart on Sat Jul 13 13:26:59 2013.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Trabajo Final Vehiculos's documentation!
+===================================================
+
+Contenido:
+
+.. toctree::
+   :maxdepth: 2
+
+   Projecto
+   Codigo
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

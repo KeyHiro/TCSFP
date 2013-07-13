@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # ­*­ coding: utf­8 ­*­
-# Nombre archivo: view_form.py
+# Nombre archivo: forma_tipo.py
 import sys
 from PySide import QtGui, QtCore
 
@@ -26,6 +26,9 @@ class FormTipo(QtGui.QDialog):
 		self.exec_()
 
 	def cancel(self):
+
+		"""Proqueria"""
+
 		self.reject()
 		self.parent.setEnabled(True)
 	

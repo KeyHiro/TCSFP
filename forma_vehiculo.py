@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # ­*­ coding: utf­8 ­*­
-# Nombre archivo: view_form.py
+# Nombre archivo: forma_vehiculo.py
 import sys
 import shutil
 import os

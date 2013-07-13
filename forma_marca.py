@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # ­*­ coding: utf­8 ­*­
-# Nombre archivo: view_form.py
+# Nombre archivo: forma_marca.py
 import sys
 from PySide import QtGui, QtCore
 

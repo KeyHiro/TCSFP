@@ -35,7 +35,8 @@ class Main (QtGui.QMainWindow):
 		self.show()
 
 	def create_folder(self):
-		"""Revisa si existe el directorio donde se guerdan los respaldos de las imagenes de 
+		"""EXTRA EXTRA
+			Revisa si existe el directorio donde se guerdan los respaldos de las imagenes de 
 			los autos. De no existir, la crea y lo reporta mediante un mensaje."""
 		directorio = os.path.join(self.dir, '.Imagenes_Autos')
 		if not os.path.isdir(directorio):
