@@ -1,0 +1,8 @@
+===========================================
+forma_vehiculo.py
+===========================================
+
+.. automodule:: forma_vehiculo
+
+.. autoclass:: forma_vehiculo.FormVehiculo
+   :members:

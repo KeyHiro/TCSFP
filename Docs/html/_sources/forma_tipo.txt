@@ -1,0 +1,8 @@
+===========================================
+forma_tipo.py
+===========================================
+
+.. automodule:: forma_tipo
+
+.. autoclass:: forma_tipo.FormTipo
+   :members:

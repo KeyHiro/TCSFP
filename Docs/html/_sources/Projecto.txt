@@ -1,0 +1,62 @@
+===========================================
+Projecto
+===========================================
+
+Requisitos funcionales básicos
+-------------------------------------------
+
+	‣Administración de las marcas de vehículos
+
+	‣Mostrarlas en una grilla
+
+	‣En la grilla mostrar la cantidad todal de vehículos para cada marca
+
+	‣Formulario de creación
+
+	‣Formulario de edición
+
+	‣Eliminar marcas
+
+	‣Administración de los vehículos
+
+	‣Mostrar automóviles en una grilla
+
+	‣Filtro por marca en la grilla
+
+	‣Formulario de creación
+
+	‣Formulario de edición
+
+	‣Eliminar vehículos
+
+	‣Validaciones en formularios
+
+	‣En las marcas los campos nombre y país son obligatorios
+
+	‣En los autos el modelo, la fecha de creación son obligatorios
+
+	‣En la grilla que muestra los autos se debe poder filtrar los datos por marca
+
+Requisitos funcionales adicionales
+---------------------------------------
+	-Poder asignar una imagen del vehículo en el formulario de creación
+
+	-Editar la imagen asociada al vehículo en el formulario de edición
+
+	-Mostrar la imagen del vehículo  en los formularios de creación y edición
+
+	-Mostrar imagen para cada vehículo en la grilla
+
+	-Implementar buscador enla grilla de vehículos que búsque coincidencias en todas las columnas
+
+Requisitos tecnológicos
+---------------------------------------
+	•Python como lenguaje de programación
+
+	•Pyside para la creación de la interfaz de usuario
+
+	•Base de datos SQLite
+
+	•Utilizar control de versiones con GIT y el serivicio GITHUB como repositorio de sus códigos fuentes
+
+	•Generar documentación de código con sphinx

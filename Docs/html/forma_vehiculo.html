@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>forma_vehiculo.py &mdash; Trabajo Final Vehiculo 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Trabajo Final Vehiculo 1.0.0 documentation" href="index.html" />
+    <link rel="up" title="Codigos" href="Codigo.html" />
+    <link rel="next" title="forma_marca.py" href="forma_marca.html" />
+    <link rel="prev" title="Vehiculos.py" href="Vehiculos.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forma_marca.html" title="forma_marca.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Vehiculos.html" title="Vehiculos.py"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Trabajo Final Vehiculo 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="Codigo.html" accesskey="U">Codigos</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-forma_vehiculo">
+<span id="forma-vehiculo-py"></span><h1>forma_vehiculo.py<a class="headerlink" href="#module-forma_vehiculo" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="forma_vehiculo.FormVehiculo">
+<em class="property">class </em><tt class="descclassname">forma_vehiculo.</tt><tt class="descname">FormVehiculo</tt><big>(</big><em>parent=None</em>, <em>trigger=None</em><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="forma_vehiculo.FormVehiculo.cancel">
+<tt class="descname">cancel</tt><big>(</big><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo.cancel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Se termina el dialogo y se cierra la ventana al clickear el boton Cancelar</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="forma_vehiculo.FormVehiculo.nuevo_imagen">
+<tt class="descname">nuevo_imagen</tt><big>(</big><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo.nuevo_imagen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abre una ventana en la cual el usuario buscara y seleccionara un archivo con la extension
+.png, .xpm o .jpg</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="forma_vehiculo.FormVehiculo.nuevo_marca">
+<tt class="descname">nuevo_marca</tt><big>(</big><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo.nuevo_marca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si la marca ya existe en la base de datos, si resulta no existir
+en la base de datos, esta es agregada</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="forma_vehiculo.FormVehiculo.nuevo_tipo">
+<tt class="descname">nuevo_tipo</tt><big>(</big><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo.nuevo_tipo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica si el tipo ingresado por el usuario ya existia o no, en el caso
+que no exista</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="forma_vehiculo.FormVehiculo.ok">
+<tt class="descname">ok</tt><big>(</big><big>)</big><a class="headerlink" href="#forma_vehiculo.FormVehiculo.ok" title="Permalink to this definition">¶</a></dt>
+<dd><p>Almacena los datos ingresados por el usuario en una lista, para luego ingresarlos
+en la base de datos, con la condicion de que los datos no sean nulos</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Vehiculos.html"
+                        title="previous chapter">Vehiculos.py</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="forma_marca.html"
+                        title="next chapter">forma_marca.py</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/forma_vehiculo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forma_marca.html" title="forma_marca.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Vehiculos.html" title="Vehiculos.py"
+             >previous</a> |</li>
+        <li><a href="index.html">Trabajo Final Vehiculo 1.0.0 documentation</a> &raquo;</li>
+          <li><a href="Codigo.html" >Codigos</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Grupo 3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
