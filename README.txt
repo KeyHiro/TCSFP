@@ -1,3 +1,9 @@
+El codigo principal es el Vehiculos.py
+
+Para abrir la documentacion ir a la carpeta Documentación luego a html y abrir index.html
+
+
+*************************************************************************
 Nuestro trabajo consiste en crear un modelo para administrar los autos de una concecionaria que trabaja con diferentes marcas y tipos.
 El programa consta de 2 grillas, en una se muestran los vehiculos y en la otra las marcas, cada una con diferentes herramientas para
 la mejor organizacion de los vehiculos de la concesionaria:
