@@ -205,6 +205,7 @@ def __contar_autos_por_marca(args):
 def ejecutar(func, args): # cambiar el nombre
 	"""
 	Ejecuta alguna de las funciones, dependiendo de los parametros dados.
+	
 	Ej:
 	ejecuta('añadir auto', [modelo, fk_id_marca, fk_id_tipo, color, motor, peso, descripcion,
 	rendimiento, imagen, fecha_creacion, marca, tipo])

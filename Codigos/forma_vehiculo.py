@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# ­*­ coding: utf­8 ­*­
+# -*- coding: utf-8 -*-
 # Nombre archivo: forma_vehiculo.py
 import sys
 import shutil

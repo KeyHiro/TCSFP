@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# ­*­ coding: utf­8 ­*­
+# -*- coding: utf-8 -*-
 # Nombre archivo: forma_marca.py
 import sys
 from PySide import QtGui, QtCore
@@ -32,8 +32,9 @@ class FormMarca(QtGui.QDialog):
 		self.parent.setEnabled(True)
 
 	def ok(self):
-		"""Se almacenan los datos en una lista la cual sera agregada a la base de datos
-		   posteriormente, asegurando que los datos no sean nulos"""
+		"""Se almacenan los datos en una lista la cual sera agregada 
+			a la base de datos
+			posteriormente, asegurando que los datos no sean nulos"""
 		self.marca = [self.ui.le_nom.text(),
 					self.ui.le_pais.text()
 					]

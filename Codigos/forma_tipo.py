@@ -1,17 +1,19 @@
 #!/usr/bin/python
-# ­*­ coding: utf­8 ­*­
-# Nombre archivo: forma_tipo.py
+# -*- coding: utf-8 -*-
+
 import sys
 from PySide import QtGui, QtCore
-
 from dialog_tipo import Ui_Dialog
 
 class FormTipo(QtGui.QDialog):
-	""""""
+	""" Esta es la clase que se encarga de crear el formulario para agregar 
+		un tipo de auto"""
 	result = False
 	trigger = None
 	tipo = []
+	
 	def __init__(self, parent=None, trigger=None):
+		"""Contructor"""
 		QtGui.QDialog.__init__(self, parent)
 		self.parent = parent
 		self.trigger = trigger
@@ -45,5 +47,6 @@ class FormTipo(QtGui.QDialog):
 			self.parent.setEnabled(True)
 	
 	def closeEvent(self, event):
+		"""Lo que se hace cuando se cierra la ventana"""
 		self.parent.setEnabled(True)
 		self.reject()
