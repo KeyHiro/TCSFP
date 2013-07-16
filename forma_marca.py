@@ -7,7 +7,7 @@ from PySide import QtGui, QtCore
 #Importamos el constructor de la clase generada automáticamente
 from dialog_marca import Ui_Dialog
 class FormMarca(QtGui.QDialog):
-
+	""""""
 	result = False
 	trigger = None
 	marca = []
@@ -32,7 +32,8 @@ class FormMarca(QtGui.QDialog):
 		self.parent.setEnabled(True)
 
 	def ok(self):
-		
+		"""Se almacenan los datos en una lista la cual sera agregada a la base de datos
+		   posteriormente, asegurando que los datos no sean nulos"""
 		self.marca = [self.ui.le_nom.text(),
 					self.ui.le_pais.text()
 					]

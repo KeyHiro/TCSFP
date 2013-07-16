@@ -7,6 +7,7 @@ from PySide import QtGui, QtCore
 from dialog_tipo import Ui_Dialog
 
 class FormTipo(QtGui.QDialog):
+	""""""
 	result = False
 	trigger = None
 	tipo = []
@@ -27,12 +28,13 @@ class FormTipo(QtGui.QDialog):
 
 	def cancel(self):
 
-		"""Proqueria"""
+		"""Se detiene el loop cerrando la ventana"""
 
 		self.reject()
 		self.parent.setEnabled(True)
 	
 	def ok(self):
+		"""Almacena en una lista los datos ingresados por el usuario"""
 		if(self.trigger == "Nuevo"):
 			self.tipo = [self.ui.le_nom.text(),
 						self.ui.sb_puertas.textFromValue(self.ui.sb_puertas.value())]

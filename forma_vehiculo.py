@@ -14,6 +14,7 @@ from forma_tipo import FormTipo
 from controlador_autos import ejecutar as controlador
 
 class FormVehiculo(QtGui.QDialog):
+	""""""
 	result = False
 	trigger = None
 	vehiculo = []
@@ -86,6 +87,8 @@ class FormVehiculo(QtGui.QDialog):
 		self.exec_()
 
 	def nuevo_imagen(self):
+		"""Abre una ventana en la cual el usuario buscara y seleccionara un archivo con la extension
+		   .png, .xpm o .jpg """
 		dialog = QtGui.QFileDialog(self)
 		dialog.setNameFilter(self.tr("Images (*.png *.xpm *.jpg)"))
 		dialog.setFileMode(QtGui.QFileDialog.ExistingFile)
@@ -103,6 +106,8 @@ class FormVehiculo(QtGui.QDialog):
 			self.ui.btn_ok.setEnabled(True)
 	
 	def nuevo_tipo(self):
+		"""Verifica si el tipo ingresado por el usuario ya existia o no, en el caso
+		   que no exista """
 		dialog_tipo = FormTipo(self, "Nuevo")
 		if dialog_tipo.result:
 			controlador('añadir tipo', dialog_tipo.tipo)
@@ -112,6 +117,8 @@ class FormVehiculo(QtGui.QDialog):
 			self.ui.cb_tipo.addItem(tipo[1], tipo[0])
 
 	def nuevo_marca(self):
+		"""Verifica si la marca ya existe en la base de datos, si resulta no existir
+		   en la base de datos, esta es agregada """
 		dialog_marca = FormMarca(self, "Nuevo")
 		
 		if dialog_marca.result:
@@ -123,11 +130,13 @@ class FormVehiculo(QtGui.QDialog):
 			self.ui.cb_marca.addItem(marca[1], marca[0])
 
 	def cancel(self):
+		"""Se termina el dialogo y se cierra la ventana al clickear el boton Cancelar"""
 		self.reject()
 		self.parent.setEnabled(True)
 	
 	def ok(self):
-
+		"""Almacena los datos ingresados por el usuario en una lista, para luego ingresarlos
+		   en la base de datos, con la condicion de que los datos no sean nulos """
 		nombre_archivo = os.path.basename(self.ui.le_imagen.text())
 		fecha = self.ui.sb_fecha.textFromValue(self.ui.sb_fecha.value())
 		id_marca = self.ui.cb_marca.itemData(self.ui.cb_marca.currentIndex())

@@ -129,7 +129,7 @@ def __eliminar_auto(args):
 def __eliminar_marca(args):
 	"""
 	Elimina una marca de la tabla marcas
-	Se supodrá que args tendrá el siguiente formato:
+	Se supodrá que obtenerargs tendrá el siguiente formato:
 	(id_marca)
 	"""
 	query = """DELETE FROM marcas WHERE id_marca = ?"""

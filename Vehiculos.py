@@ -21,7 +21,7 @@ class Main (QtGui.QMainWindow):
 	def __init__(self):
 		"""Se inicia el inicializarse la clase, y luego de llamar a la clase padre,
 			y cargar la plantilla grafica, ejecuta los metodos necesarios
-			para su uncionamiento. Al final llama al metodo 'show()' (que hereda de QMainWindow)
+			para su funcionamiento. Al final llama al metodo 'show()' (que hereda de QMainWindow)
 			que se encarga de dibujar los elementos gráficos en pantalla."""
 		super(Main, self).__init__()
 		self.create_folder()

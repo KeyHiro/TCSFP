@@ -1,0 +1,14 @@
+Nuestro trabajo consiste en crear un modelo para administrar los autos de una concecionaria que trabaja con diferentes marcas y tipos.
+El programa consta de 2 grillas, en una se muestran los vehiculos y en la otra las marcas, cada una con diferentes herramientas para
+la mejor organizacion de los vehiculos de la concesionaria:
+
+-Nuevo Vehiculo: Al clickear este boton se abrira un formulario el cual debe ser completado por el usuario en su totalidad, una vez 
+completado el formulario correctamente se podra clickaer el boton "Aceptar" para agregar un nuevo elemento con los datos del formulario 
+en la base de datos.
+
+-Editar Vehiculo: Para que este boton este activo, es necesario seleccionar un elemento de la grilla de vehiculos, al clickearlo
+ se mostrara en pantalla el formulario con los datos.
+
+-Eliminar Vehiculo: Para que esta opcion este habilitada es necesario tener seleccionado un elemento de la grilla de vehiculos, luego de seleccionar un elemento y hacer click en el boton "Eliminar Vehiculo" surgira una ventana preguntandole al usuario si esta seguro de eliminar el elemento en caso de que haya sido un error debe presionar "cancelar", si esta seguro de eliminar el elemento debe presionar "Save", el vehiculo de eliminara de la base de datos y ya no se mostrara en la grilla dicho elemento.
+
+
